@@ -1,0 +1,14 @@
+@import '../../styles/variables';
+  
+  .orb {
+    width: 70vh;
+    height: 70vh;
+    position: fixed;
+    bottom: -2em; 
+    right: -2em;
+    background: linear-gradient(180deg, #f56692, #f2994a 100%);
+    border-radius: 50%;
+    filter: blur(400px);
+    z-index: -111;
+  }
+  
