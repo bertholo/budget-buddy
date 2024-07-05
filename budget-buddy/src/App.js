@@ -1,4 +1,3 @@
-import './App.scss';
 import TopNav from './components/TopNav/TopNav';
 import Orb from './components/Orb/Orb';
 import Dashboard from './components/Dashboard/Dashboard';

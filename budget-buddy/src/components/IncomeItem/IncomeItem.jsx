@@ -9,7 +9,6 @@ import {
   ChatSquareTextFill
 } from 'react-bootstrap-icons';
 
-
 function IncomeItem({
   id,
   title,
@@ -22,21 +21,20 @@ function IncomeItem({
 }) {
 
 
-
   return (
     <Container>
       <Row xs={2} md={3}>
-        <Col md={1} className='d-flex fustify-content-center align-items-center'>
+        <Col md={1} className='d-flex justify-content-center align-items-center'>
           {type === 'Expense' ? expenseIcon(category) : incomeIcon(category)}
         </Col>
         <Col xs={6} md={10}>
           <Row>
-            <Col >
+            <Col>
               <h4>{title}</h4>
             </Col>
           </Row>
           <Row>
-            <Col >
+            <Col>
               <CurrencyDollar />
               {amount}
             </Col>
@@ -50,18 +48,14 @@ function IncomeItem({
             </Col>
           </Row>
         </Col>
-        <Col xs={1} md={1} >
-          <Button
-            id={id}
-            onClick={() => deleteItem(id)}
-          >
+        <Col xs={1} md={1}>
+          <Button variant="danger" onClick={() => deleteItem(id)}>
             <TrashFill />
           </Button>
         </Col>
       </Row>
     </Container>
-
-  )
+  );
 }
 
 export default React.memo(IncomeItem);

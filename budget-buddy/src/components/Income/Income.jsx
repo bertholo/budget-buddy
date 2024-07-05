@@ -1,15 +1,43 @@
-import React, { useEffect } from 'react'
-import { useGlobalContext } from '../../context/globalContext'
-import { Col, Container, Row, ListGroup } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { useGlobalContext } from '../../context/globalContext';
+import { Col, Container, Row, ListGroup, Spinner, Alert } from 'react-bootstrap';
 import IncomeItem from '../IncomeItem/IncomeItem';
 import IncomeForm from '../Forms/IncomeForm';
 
 function Income() {
   const { getIncomes, incomes, deleteIncome, totalIncome } = useGlobalContext();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getIncomes()
+    const fetchIncomes = async () => {
+      try {
+        await getIncomes();
+      } catch (err) {
+        setError('Failed to fetch incomes');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchIncomes();
   }, []);
+
+  if (loading) {
+    return (
+      <Container className='d-flex justify-content-center align-items-center'>
+        <Spinner animation="border" variant="primary" />
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container className='d-flex justify-content-center align-items-center'>
+        <Alert variant="danger">{error}</Alert>
+      </Container>
+    );
+  }
 
   return (
     <Container>
@@ -49,7 +77,7 @@ function Income() {
         </Col>
       </Row>
     </Container>
-  )
+  );
 }
 
 export default Income;

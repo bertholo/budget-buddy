@@ -44,7 +44,7 @@ function Dashboard() {
             </Col>
           </Row>
         </Col>
-        <Col className='my-bg'>
+        <Col xs={12} lg={4} className='my-bg'>
         <MonthChart />
         </Col>
       </Row>

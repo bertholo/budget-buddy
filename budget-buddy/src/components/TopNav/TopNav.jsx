@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './TopNavStyles.scss';
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import { menuData } from '../../utils/menuData';
-
+import logo from '../../icons/logo.png';
 
 function TopNav({ handleActive }) {
   const expand = false;
@@ -20,7 +20,7 @@ function TopNav({ handleActive }) {
     <Navbar key="offcanvas" bg="light" expand={expand} className="mb-3">
       <Container fluid>
         <Navbar.Brand href="#" className='brand-name'>
-          <img src='icons/logo.png' alt="logo" />Budget Buddy
+          <img src={logo} alt="logo" />Budget Buddy
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={handleShow} />
         <Navbar.Offcanvas
@@ -32,7 +32,7 @@ function TopNav({ handleActive }) {
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title id="offcanvasNavbarLabel" className='brand-name' >
-              <img src='icons/logo.png' alt='logo' /><span>Your Username</span>
+              <img src={logo} alt='logo' /><span>Your Username</span>
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
