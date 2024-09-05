@@ -15,18 +15,18 @@ function Expenses() {
         await getExpenses();
       } catch (err) {
         console.error('Error fetching expenses:', err);
-        setError('Failed to fetch expenses');
+        setError(err.message || 'Failed to fetch expenses');
       } finally {
         setLoading(false);
       }
     };
 
     fetchExpenses();
-  }, []);
+  }, [getExpenses]);
 
   if (loading) {
     return (
-      <Container className='d-flex justify-content-center align-items-center'>
+      <Container className='d-flex justify-content-center align-items-center min-vh-100'>
         <Spinner animation="border" variant="primary" />
       </Container>
     );
@@ -34,8 +34,8 @@ function Expenses() {
 
   if (error) {
     return (
-      <Container className='d-flex justify-content-center align-items-center'>
-        <Alert variant="danger">{error}</Alert>
+      <Container className='d-flex justify-content-center align-items-center min-vh-100'>
+        <Alert variant="danger">{error.toString()}</Alert>
       </Container>
     );
   }
@@ -44,7 +44,7 @@ function Expenses() {
     <Container>
       <Row>
         <Container className='d-flex justify-content-center'>
-          <h1>Total Expense: <span className="text-danger">${totalExpense()}</span></h1>
+          <h1>Total Expense: <span className="text-danger">${totalExpense() || 0}</span></h1>
         </Container>
       </Row>
       <Row className='mt-5'>
@@ -54,7 +54,7 @@ function Expenses() {
         <Col>
           <ListGroup>
             {expenses.length === 0 ? (
-              <ListGroup.Item>No expense records found.</ListGroup.Item>
+              <ListGroup.Item>No expense records found. Please add an expense.</ListGroup.Item>
             ) : (
               expenses.map((expense) => {
                 const { _id, title, amount, category, date, description, type } = expense;

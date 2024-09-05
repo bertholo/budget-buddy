@@ -21,11 +21,11 @@ function Income() {
     };
 
     fetchIncomes();
-  }, []);
+  }, [getIncomes]);
 
   if (loading) {
     return (
-      <Container className='d-flex justify-content-center align-items-center'>
+      <Container className='d-flex justify-content-center align-items-center min-vh-100'>
         <Spinner animation="border" variant="primary" />
       </Container>
     );
@@ -33,8 +33,8 @@ function Income() {
 
   if (error) {
     return (
-      <Container className='d-flex justify-content-center align-items-center'>
-        <Alert variant="danger">{error}</Alert>
+      <Container className='d-flex justify-content-center align-items-center min-vh-100'>
+        <Alert variant="danger">{error.toString()}</Alert>
       </Container>
     );
   }
@@ -53,7 +53,7 @@ function Income() {
         <Col>
           <ListGroup>
             {incomes.length === 0 ? (
-              <ListGroup.Item>No income records found.</ListGroup.Item>
+              <ListGroup.Item>No income records found. Please add an income.</ListGroup.Item>
             ) : (
               incomes.map((income) => {
                 const { _id, title, amount, category, date, description, type } = income;

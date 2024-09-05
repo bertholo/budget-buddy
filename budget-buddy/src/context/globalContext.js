@@ -72,7 +72,7 @@ export const GlobalProvider = ({ children }) => {
             getIncomes();
 
         } catch (error) {
-            setError(null);
+            setError(error.message);
         }
     }
 
@@ -90,7 +90,7 @@ export const GlobalProvider = ({ children }) => {
             }
             getExpenses();
         } catch (error) {
-            setError(error.result.data.message);
+            setError(error.message);
         }
     }
 
@@ -108,7 +108,7 @@ export const GlobalProvider = ({ children }) => {
             const result = await response.json();
             setExpenses(result.expenses)
         } catch (error) {
-            setError(error);
+            setError(null);
         }
     }
 
@@ -125,7 +125,7 @@ export const GlobalProvider = ({ children }) => {
             }
             getExpenses();
         } catch (error) {
-            setError(error);
+            setError(error.message);
         }
     }
 
