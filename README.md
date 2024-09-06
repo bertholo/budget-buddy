@@ -5,6 +5,7 @@ Welcome to Budget Buddy, a comprehensive expense and income tracker designed to 
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Demo](#demo)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -16,6 +17,10 @@ Welcome to Budget Buddy, a comprehensive expense and income tracker designed to 
 ## Introduction
 
 Budget Buddy is a React-based web application integrated with a Node.js backend to enable users to track both income and expenses. This project aims to offer a user-friendly interface that facilitates adding, categorizing, and managing financial transactions.
+
+## Demo
+
+https://bertholo.github.io/budget-buddy/
 
 ## Features
 
