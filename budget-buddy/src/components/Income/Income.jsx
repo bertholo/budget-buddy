@@ -21,7 +21,7 @@ function Income() {
     };
 
     fetchIncomes();
-  }, [getIncomes]);
+  }, []);
 
   if (loading) {
     return (

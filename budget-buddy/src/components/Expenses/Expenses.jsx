@@ -22,7 +22,7 @@ function Expenses() {
     };
 
     fetchExpenses();
-  }, [getExpenses]);
+  }, []);
 
   if (loading) {
     return (
