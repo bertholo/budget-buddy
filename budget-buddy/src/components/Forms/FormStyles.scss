@@ -11,3 +11,11 @@
 .btn-sub {
     flex-direction: row-reverse;
 }
+
+.form-control {
+    position: relative;
+    z-index: 1;
+  }
+  .datepicker-popper {
+    z-index: 1000;
+  }

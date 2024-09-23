@@ -76,6 +76,8 @@ function ExpenseForm() {
                         setInputState({ ...inputState, date: date })
                     }}
                     className='form-control'
+                    popperClassName="datepicker-popper"
+                    autoComplete="off"
                 />
             </InputGroup>
             <InputGroup className='mb-3'>
