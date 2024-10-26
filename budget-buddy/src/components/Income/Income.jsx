@@ -10,9 +10,9 @@ function Income() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchIncomes = async () => {
-      try {
-        await getIncomes();
+    const fetchIncomes = () => {
+        try {
+        getIncomes();
       } catch (err) {
         setError('Failed to fetch incomes');
       } finally {
@@ -21,7 +21,8 @@ function Income() {
     };
 
     fetchIncomes();
-  }, []);
+  }, [getIncomes, setError]);
+
 
   if (loading) {
     return (

@@ -13,7 +13,7 @@ import {
 
 import { Line } from 'react-chartjs-2';
 import { useGlobalContext } from '../../context/globalContext';
-import { dateFormat, getMonthlyTotals, mergeMonthlyData } from '../../utils/utils';
+import { getMonthlyTotals, mergeMonthlyData } from '../../utils/utils';
 
 ChartJs.register(
     CategoryScale,

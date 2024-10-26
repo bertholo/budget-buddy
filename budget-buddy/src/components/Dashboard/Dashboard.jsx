@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Col, Container, Row, Stack } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useGlobalContext } from '../../context/globalContext';
 import Transactions from '../Transactions/Transactions';
 import MonthChart from '../Chart/MonthChart';
@@ -12,7 +12,7 @@ function Dashboard() {
   useEffect(() => {
     getIncomes()
     getExpenses()
-  }, [])
+  }, [getIncomes, getExpenses])
 
 
   return (

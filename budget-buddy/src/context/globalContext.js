@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 
 
 const BASE_URL = 'http://localhost:5000/api/v1/';
@@ -6,7 +6,7 @@ const BASE_URL = 'http://localhost:5000/api/v1/';
 const GlobalContext = React.createContext();
 
 export const GlobalProvider = ({ children }) => {
-    
+
     const [incomes, setIncomes] = useState([]);
     const [expenses, setExpenses] = useState([]);
     const [error, setError] = useState(null);
@@ -30,7 +30,7 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
-    const getIncomes = async () => {
+    const getIncomes = useCallback(async () => {
         try {
             const response = await fetch(`${BASE_URL}income/get-incomes`, {
                 method: 'GET',
@@ -48,7 +48,7 @@ export const GlobalProvider = ({ children }) => {
         } catch (error) {
             setError(null)
         }
-    }
+    }, [])
 
     const totalIncome = () => {
         let totalIncome = 0;
@@ -94,7 +94,7 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
-    const getExpenses = async () => {
+    const getExpenses = useCallback(async () => {
         try {
             const response = await fetch(`${BASE_URL}expense/get-expenses`, {
                 method: 'GET',
@@ -110,7 +110,7 @@ export const GlobalProvider = ({ children }) => {
         } catch (error) {
             setError(null);
         }
-    }
+    }, [])
 
     const deleteExpense = async (expenseId) => {
         try {

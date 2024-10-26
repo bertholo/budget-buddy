@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { Form, Row, Col, Button, InputGroup, Alert } from 'react-bootstrap';
+import { Form, Button, InputGroup, Alert } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { useGlobalContext } from '../../context/globalContext';
 import './FormStyles.scss';
 
 function ExpenseForm() {
 
-    const { addExpense, error, setError } = useGlobalContext();
+    const { addExpense, error } = useGlobalContext();
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',

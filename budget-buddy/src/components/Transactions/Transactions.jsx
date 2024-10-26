@@ -11,7 +11,7 @@ function Transactions({ active }) {
   useEffect(() => {
     getExpenses();
     getIncomes();
-  }, [])
+  }, [getIncomes, getExpenses])
 
 
   if (active === 2) {
