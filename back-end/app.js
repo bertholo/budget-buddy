@@ -8,7 +8,7 @@ const transactionsRouter = require('./routes/transactionsRouter');
 
 const app = express();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 const corsOptions = {
     origin: ['http://localhost:3000', 'https://budbuddy.netlify.app'], // Allow both localhost and the production URL
