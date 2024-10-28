@@ -1,7 +1,7 @@
 import React, { useContext, useState, useCallback } from "react";
 
 
-const BASE_URL = 'https://budbuddy.netlify.app/api/v1/';
+const BASE_URL = 'https://budget-buddy-4ekn.onrender.com';
 
 const GlobalContext = React.createContext();
 
