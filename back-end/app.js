@@ -10,8 +10,15 @@ const app = express();
 
 const PORT = process.env.PORT;
 
+const corsOptions = {
+    origin: ['http://localhost:3000', 'https://budbuddy.netlify.app'], // Allow both localhost and the production URL
+    methods: ['GET', 'POST', 'DELETE', 'PUT'], // Specify methods your server supports
+    credentials: true // Allow cookies if you need them
+};
+
+
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cors());
 app.use(morgan('dev'));
 
 
