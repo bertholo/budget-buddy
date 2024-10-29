@@ -10,6 +10,20 @@ import Expenses from './components/Expenses/Expenses';
 
 function App() {
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch('https://budget-buddy-4ekn.onrender.com')
+        .then(response => {
+          if (!response.ok) {
+            console.error('Error pinging the server');
+          }
+        })
+        .catch(error => console.error('Network error:', error));
+    }, 300000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const [active, setActive] = useState(1);
 
   const handleActive = (id) => {
@@ -30,21 +44,6 @@ function App() {
         return <Dashboard />
     }
   }
-
-
-  const testDbConnection = async () => {
-    try {
-      const response = await fetch('/.netlify/functions/connectToDb');
-      const data = await response.json();
-      console.log(data.message);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  useEffect(() => {
-    testDbConnection();
-  }, []);
 
   return (
     <Container className='m-0 p-0' fluid>
