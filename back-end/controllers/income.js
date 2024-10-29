@@ -1,7 +1,10 @@
 const IncomeSchema = require('../models/incomeModel');
 
 exports.addIncome = async (req, res) => {
-    const { title, amount, description, date, category } = req.body;
+    const { title, description, date, category } = req.body;
+    let { amount } = req.body;
+
+    amount = Number(amount);
 
     const income = new IncomeSchema({
         title,
@@ -15,8 +18,8 @@ exports.addIncome = async (req, res) => {
         if (!title || !description || !category) {
             return res.status(400).json({ error: 'All fields are required.' });
         }
-        if (typeof amount !== 'number' || amount < 0) {
-            return res.status(400).json({ error: 'This field should be a number more or equal to 0.' });
+        if (isNaN(amount) || amount <= 0) {
+            return res.status(400).json({ error: 'Amount should be a positive number.' });
         }
 
         await income.save();
