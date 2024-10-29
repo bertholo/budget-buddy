@@ -32,7 +32,7 @@ export const GlobalProvider = ({ children }) => {
 
     const getIncomes = useCallback(async () => {
         try {
-            const response = await fetch(`${BASE_URL}income/get-incomes`, {
+            const response = await fetch(`${BASE_URL}/income/get-incomes`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ export const GlobalProvider = ({ children }) => {
 
     const deleteIncome = async (incomeId) => {
         try {
-            const response = await fetch(`${BASE_URL}income/delete-income/${incomeId}`, {
+            const response = await fetch(`${BASE_URL}/income/delete-income/${incomeId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ export const GlobalProvider = ({ children }) => {
 
     const addExpense = async (expense) => {
         try {
-            const response = await fetch(`${BASE_URL}expense/add-expense`, {
+            const response = await fetch(`${BASE_URL}/expense/add-expense`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -96,7 +96,7 @@ export const GlobalProvider = ({ children }) => {
 
     const getExpenses = useCallback(async () => {
         try {
-            const response = await fetch(`${BASE_URL}expense/get-expenses`, {
+            const response = await fetch(`${BASE_URL}/expense/get-expenses`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -114,7 +114,7 @@ export const GlobalProvider = ({ children }) => {
 
     const deleteExpense = async (expenseId) => {
         try {
-            const response = await fetch(`${BASE_URL}expense/delete-expense/${expenseId}`, {
+            const response = await fetch(`${BASE_URL}/expense/delete-expense/${expenseId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
