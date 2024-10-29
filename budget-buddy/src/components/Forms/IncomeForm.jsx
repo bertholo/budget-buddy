@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Form, Button, InputGroup, Alert } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { useGlobalContext } from '../../context/globalContext';
@@ -6,7 +6,7 @@ import './FormStyles.scss'
 
 function IncomeForm() {
 
-    const { addIncome, error } = useGlobalContext();
+    const { addIncome, error, setError } = useGlobalContext();
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',
@@ -24,8 +24,14 @@ function IncomeForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const incomeData = {
+            ...inputState,
+            amount: parseFloat(inputState.amount),
+        };
+
         try {
-            addIncome(inputState)
+            addIncome(incomeData)
             setInputState({
                 title: '',
                 amount: '',
@@ -38,9 +44,22 @@ function IncomeForm() {
         }
     }
 
+    useEffect(() => {
+        if(error) {
+            const timer = setTimeout(() => {
+                setError(null);
+            }, 10000);
+            return () => clearTimeout(timer)
+        }
+    }, [error, setError]);
+
+    const handleDismiss = () => {
+        setError(null);
+    };
+
     return (
         <Form onSubmit={handleSubmit}>
-            {error && <Alert variant="danger">{error}</Alert>}
+            {error && <Alert variant="danger" onClose={handleDismiss} dismissible>{error}</Alert>}
                     <InputGroup className="mb-3">
                         <InputGroup.Text id="basic-addon1">Title</InputGroup.Text>
                         <Form.Control

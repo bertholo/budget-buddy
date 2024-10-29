@@ -22,7 +22,8 @@ export const GlobalProvider = ({ children }) => {
                 body: JSON.stringify(income)
             });
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Network response was not ok');
             }
             getIncomes();
         } catch (error) {
@@ -86,7 +87,8 @@ export const GlobalProvider = ({ children }) => {
                 body: JSON.stringify(expense)
             });
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Network response was not ok');
             }
             getExpenses();
         } catch (error) {

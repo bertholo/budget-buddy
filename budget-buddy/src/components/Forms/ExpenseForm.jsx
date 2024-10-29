@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Form, Button, InputGroup, Alert } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { useGlobalContext } from '../../context/globalContext';
@@ -6,7 +6,7 @@ import './FormStyles.scss';
 
 function ExpenseForm() {
 
-    const { addExpense, error } = useGlobalContext();
+    const { addExpense, error, setError } = useGlobalContext();
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',
@@ -24,8 +24,14 @@ function ExpenseForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const expenseData = {
+            ...inputState,
+            amount: parseFloat(inputState.amount),
+        };
+
         try {
-            addExpense(inputState)
+            addExpense(expenseData)
             setInputState({
                 title: '',
                 amount: '',
@@ -34,13 +40,26 @@ function ExpenseForm() {
                 description: '',
             });
         } catch (error) {
-            console.error('Error adding income:', error)
+            console.error('Error adding expense:', error)
         }
     }
 
+    useEffect(() => {
+        if(error) {
+            const timer = setTimeout(() => {
+                setError(null);
+            }, 10000);
+            return () => clearTimeout(timer)
+        }
+    }, [error, setError]);
+
+    const handleDismiss = () => {
+        setError(null);
+    };
+
     return (
         <Form onSubmit={handleSubmit}>
-            {error && <Alert variant="danger">{error}</Alert>}
+            {error && <Alert variant="danger" conClose={handleDismiss} dismissible>{error}</Alert>}
             <InputGroup className="mb-3">
                 <InputGroup.Text id="basic-addon1">Title</InputGroup.Text>
                 <Form.Control
