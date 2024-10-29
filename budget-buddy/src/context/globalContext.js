@@ -1,7 +1,7 @@
 import React, { useContext, useState, useCallback } from "react";
 
 
-const BASE_URL = 'https://budget-buddy-4ekn.onrender.com';
+const BASE_URL = 'https://budget-buddy-4ekn.onrender.com/api/v1';
 
 const GlobalContext = React.createContext();
 
