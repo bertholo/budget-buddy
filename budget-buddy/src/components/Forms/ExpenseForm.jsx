@@ -19,15 +19,14 @@ function ExpenseForm() {
     const { title, amount, date, category, description } = inputState;
 
     const handleInput = (name) => e => {
-        setInputState({ ...inputState, [name]: e.target.value })
+
+        let inputValue = e.target.value.replace(/[!@#$%^&*()\-_<>?:;'"\\]/g, '');
+
+        setInputState({ ...inputState, [name]: inputValue })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        let inputValue = e.target.value;
-
-        inputValue = inputValue.replace(/[!@#$%^&*()\-_<>?:;'"\\]/g, '');
 
         const expenseData = {
             ...inputState,

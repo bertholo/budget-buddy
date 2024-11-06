@@ -20,9 +20,7 @@ function IncomeForm() {
 
     const handleInput = (name) => e => {
 
-        let inputValue = e.target.value;
-
-        inputValue = inputValue.replace(/[!@#$%^&*()\-_<>?:;'"\\]/g, '');
+        let inputValue = e.target.value.replace(/[!@#$%^&*()\-_<>?:;'"\\]/g, '');
         
         setInputState({ ...inputState, [name]: inputValue })
     }
