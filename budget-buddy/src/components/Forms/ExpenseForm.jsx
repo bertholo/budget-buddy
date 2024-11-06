@@ -25,6 +25,10 @@ function ExpenseForm() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        let inputValue = e.target.value;
+
+        inputValue = inputValue.replace(/[!@#$%^&*()\-_<>?:;'"\\]/g, '');
+
         const expenseData = {
             ...inputState,
             amount: parseFloat(inputState.amount),
